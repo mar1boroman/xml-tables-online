@@ -87,6 +87,28 @@ function loadXMLSync(url) {
   return xhr.responseXML;
 }
 
+// function to load javascript dynamically
+function loadJSSync(url) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("GET", url, false);
+  xhr.setRequestHeader("Content-Type", "text/javascript");
+  xhr.send();
+
+  return xhr.responseText;
+}
+
+// function to load css dynamically
+function loadCSSSync(url) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("GET", url, false);
+  xhr.setRequestHeader("Content-Type", "text/css");
+  xhr.send();
+
+  return xhr.responseText;
+}
+
 // function executed when the user clicks the tabular button
 function getXMLBlob(file) {
   // Create a new XML document with additional styletag
@@ -95,10 +117,42 @@ function getXMLBlob(file) {
   urlreader.readAsDataURL(file);
   urlreader.onload = function (event) {
     var fileURL = event.target.result;
+
+    // Preparing the XSL Stylesheet document dynamically
+
+    var xslDoc = loadXMLSync("xml-tables-core/xsl/xml-tables.xsl");
+
+    // Injecting the Core JS and CSS dynamically
+    var xslJS = loadJSSync("xml-tables-core/js/xml-tables.js");
+    var xslCSS = loadCSSSync("xml-tables-core/css/xml-tables.css");
+    const xslJSBlob = new Blob([xslJS], { type: "text/javascript" });
+    const xslCSSBlob = new Blob([xslCSS], { type: "text/css" });
+    var xslJSURL = URL.createObjectURL(xslJSBlob);
+    var xslCSSURL = URL.createObjectURL(xslCSSBlob);
+
+    var xmlTablesJSCore = document.createElement("script");
+    xmlTablesJSCore.setAttribute("type", "text/javascript");
+    xmlTablesJSCore.setAttribute("src", xslJSURL);
+    xmlTablesJSCore.setAttribute("crossorigin", "anonymous");
+    xslDoc.getElementsByTagName("head")[0].appendChild(xmlTablesJSCore);
+
+    var xmlTablesCSSCore = document.createElement("link");
+    xmlTablesCSSCore.setAttribute("rel", "stylesheet");
+    xmlTablesCSSCore.setAttribute("type", "text/css");
+    xmlTablesCSSCore.setAttribute("href", xslCSSURL);
+    xmlTablesCSSCore.setAttribute("crossorigin", "anonymous");
+    xslDoc.getElementsByTagName("head")[0].appendChild(xmlTablesCSSCore);
+
+    const xslString = new XMLSerializer().serializeToString(xslDoc);
+    const xslBlob = new Blob([xslString], { type: "text/xsl" });
+    var xslURL = URL.createObjectURL(xslBlob);
+
+    // Preparing the XML file referring to the XML document created above stylesheet dynamically
+
     var xmlDoc = loadXMLSync(fileURL);
     var pi = xmlDoc.createProcessingInstruction(
       "xml-stylesheet",
-      'href="https://cdn.jsdelivr.net/gh/mar1boroman/xml-tables@latest/xsl/xml-tables.xsl" type="text/xsl"'
+      'href= "' + `${xslURL}` + '"' + ' type="text/xsl"'
     );
     xmlDoc.insertBefore(pi, xmlDoc.firstChild);
 
