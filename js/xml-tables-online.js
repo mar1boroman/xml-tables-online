@@ -19,6 +19,8 @@ memory.
 Source code for this online version is hosted at 
 <a href="https://github.com/mar1boroman/xml-tables-online" target="_blank"><i class="bi bi-github" style="color: black"></i></a>.
 <br />
+Currently supported only on <b>Firefox</b> browser
+<br />
 Contributions welcome
 `;
 
