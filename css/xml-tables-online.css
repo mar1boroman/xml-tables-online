@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: #e4e4e2;
+  background-color: #f2cc8f;
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -8,12 +8,12 @@ body {
   width: 95%;
   height: 100vh;
   margin: 0 auto;
-  background-color: #e4e4e2;
+  background-color: #f2cc8f;
 }
 #app-title-row {
   margin-bottom: 10px;
   /* color: #212529; */
-  color: #cfcfce;
+  color: #f0b75c;
 }
 
 #app-title {
@@ -46,9 +46,8 @@ body {
 }
 
 #label-xml-file-input {
-  background: #e4e4e2;
+  background: #f4f1de;
   font-size: 0.875em;
-  box-shadow: 6px 6px 13px #cfcfce, -6px -6px 13px #f9f9f6;
 
   height: 40px;
   width: 40px;
@@ -56,9 +55,8 @@ body {
 }
 
 #label-xml-file-input:hover {
-  background: linear-gradient(145deg, #c9b8a5, #efdac4);
+  background: #81b29a;
   font-size: 0.875em;
-  box-shadow: 6px 6px 13px #cfcfce, -6px -6px 13px #f9f9f6;
 
   height: 40px;
   width: 40px;
@@ -70,10 +68,10 @@ body {
 }
 
 #drag-and-drop-textarea {
-  background: #e4e4e2;
+  background: #f4f1de;
   border: none;
   font-size: 0.875em;
-  box-shadow: 6px 6px 13px #cfcfce, -6px -6px 13px #f9f9f6;
+
   margin-top: 15px;
   margin-bottom: 10px;
   padding: 0 5px 0 5px;
@@ -83,7 +81,7 @@ body {
 #xml-text {
   font-family: "Source Sans Pro", sans-serif;
   white-space: pre-wrap;
-  background: #e4e4e2;
+  background: #f4f1de;
   padding: 10px 5px 10px 5px;
   height: 100%;
   width: 100%;
@@ -92,13 +90,11 @@ body {
 }
 
 .btn-custom {
-  background: #e4e4e2;
+  background: #f4f1de;
   border-radius: 5px;
-  box-shadow: 6px 6px 13px #cfcfce, -6px -6px 13px #f9f9f6;
 }
 
 .btn-custom:hover {
   border-radius: 5px;
-  background: linear-gradient(145deg, #c9b8a5, #efdac4);
-  box-shadow: 6px 6px 13px #cfcfce, -6px -6px 13px #f9f9f6;
+  background: #81b29a;
 }

@@ -18,10 +18,6 @@ memory.
 <br />
 Source code for this online version is hosted at 
 <a href="https://github.com/mar1boroman/xml-tables-online" target="_blank"><i class="bi bi-github" style="color: black"></i></a>.
-<br />
-Currently supported only on <b>Firefox</b> browser
-<br />
-Contributions welcome
 `;
 
 window.onload = function () {
@@ -33,6 +29,10 @@ function setInfo() {
   document.getElementById("xml-text").innerHTML = htmlInfo;
   document.getElementById("xml-text").style.textAlign = "center";
   document.getElementById("reset-btn").hidden = true;
+}
+
+function onReset() {
+  location.reload();
 }
 
 function setXMLDocFile(file) {
@@ -161,6 +161,8 @@ function getXMLBlob(file) {
 
     var url = URL.createObjectURL(xmlBlob);
     window.open(url);
+
+    URL.revokeObjectURL(url);
   };
 }
 

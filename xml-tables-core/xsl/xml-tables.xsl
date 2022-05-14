@@ -12,59 +12,41 @@
                 <!-- Meta tags -->
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <meta charset="utf-8"/>
-                <!-- Include Bootstrap JS,Bootstrap CSS, JQuery libraries -->
+                
+
+                <!-- Include Bootstrap JS,Bootstrap CSS, JQuery , D3libraries -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
                 <script src="https://d3js.org/d3.v7.min.js"></script>
-
-
-                <!-- Including custome JS & CSS code -->
-                <script type="module" src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.70.5/dist/3d-force-graph.min.js"></script>
-                <!-- Including custome JS & CSS code -->                
-                <script type="module" src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.70.5/dist/3d-force-graph.min.js"></script>
+                
             </head>
             <body>
 
                 <!-- Setting up the navigation bar [Bootstrap template]-->
                 <div id="navigation-bar" class="fixed-top">
-                    <nav class="nav navbar navbar-light bg-info navbar-expand-lg">
-
+                    <nav class="nav navbar navbar-expand-md navbar-light">
+                    <!-- Visualization Link Start-->
                         <div class="container-fluid">
-                            <!-- Hamburger icon on resizing Start-->
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hamburger" aria-controls="hamburger" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <!-- Hamburger icon on resizing End -->
-
-                            <div class="collapse navbar-collapse" id="hamburger">
-
-                                <!-- Visualization Link Start-->
-
-                                <ul class="nav navbar-nav me-auto">
-                                    <li id="homepage" class="nav-item">
-                                        <a class="navbar-brand nav-link ms-3 active" data-bs-toggle="tab" data-bs-target="#home" role="tab" href="#">XML Tables</a>
-                                    </li>
-                                    <li id="vizpage2D" class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#viz2D" role="tab" href="#">Visualize</a>
-                                    </li>
-                                    <li id="vizpage3D" class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#viz3D" role="tab" href="#">3D</a>
-                                    </li>
-                                </ul>
+                            <ul class="nav navbar-nav me-auto">
+                                <li id="homepage" class="nav-item me-2">
+                                    <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#home" role="tab" href="#">Tabular</a>
+                                </li>
+                                <li id="vizpage2D" class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#viz2D" role="tab" href="#">Graph View</a>
+                                </li>
+                            </ul>
 
 
-                                <!-- Visualization Link End-->
+                            <!-- Visualization Link End-->
 
-                                <form class="d-flex nav navbar-nav">
-
-                                    <input id="search-input" class="form-control me-2" type="search" placeholder="Search"/>
-
-                                    <button id="btn-export-json" class="btn btn-success ms-auto me-2 text-nowrap">Export to JSON</button>
-                                    <button id="btn-export-csv" class="btn btn-success ms-auto me-2 text-nowrap">Export to CSV</button>
-                                </form>
-                            </div>
+                            <form class="d-flex my-0">
+                                <input id="search-input" class="form-control ms-auto me-2" type="search" placeholder="Search"/>
+                                <button id="btn-export-json" class="btn btn-custom text-nowrap me-2">Export to JSON</button>
+                                <button id="btn-export-csv" class="btn btn-custom text-nowrap">Export to CSV</button>
+                            </form>
                         </div>
+                        
                     </nav>
                 </div>
 
@@ -73,9 +55,6 @@
                 <div class="tab-content" id="xml-tabs">
                     <!-- Visualization Pane Starts -->
                     <div class="tab-pane fade  d-flex flex-row" id="viz2D" role="tabpanel">
-
-                    </div>
-                    <div class="tab-pane fade  d-flex flex-row" id="viz3D" role="tabpanel">
 
                     </div>
                     <!-- Visualization Pane Ends -->
@@ -87,15 +66,15 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel">
                         <div id="xml-table-container" class=" table-responsive container my-5 ">
 
-                            <table id="xml-table" class="table table-sm table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Parent UID</th>
-                                        <th>Object UID</th>
-                                        <th>Node Type</th>
-                                        <th>Node Name</th>
-                                        <th>Node Value</th>
-                                        <th>Node Path</th>
+                            <table id="xml-table" class="table table-sm table-hover table-borderless">
+                                <thead class="row">
+                                    <tr class="row">
+                                        <th class="col-1">Parent UID</th>
+                                        <th class="col-1">Object UID</th>
+                                        <th class="col-1">Node Type</th>
+                                        <th class="col-2">Node Name</th>
+                                        <th class="col-3">Node Value</th>
+                                        <th class="col-4">Node Path</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,7 +124,7 @@
 
         <!-- Populate HTML table with a single row -->
 
-        <tr>
+        <tr class="row">
             <xsl:attribute name="parent-uid">
                 <xsl:value-of select = "$parent-uid"/>
             </xsl:attribute>
@@ -163,24 +142,22 @@
             </xsl:attribute>
 
 
-            <td class="parent-uid">
+            <td class="parent-uid text-muted fw-lighter col-1 text-break">
                 <xsl:value-of select ="$parent-uid"/>
             </td>
-            <td class="object-uid">
+            <td class="object-uid text-muted fw-lighter col-1 text-break">
                 <xsl:value-of select ="$object-uid"/>
             </td>
-            <td class="node-type text-end">
-                <div class="node-type-badge ">
-                    <xsl:value-of select ="$get-node-type"/>
-                </div>
+            <td class="node-type col-1 text-break">
+                <xsl:value-of select ="$get-node-type"/>
             </td>
-            <td class="node-name">
+            <td class="node-name col-2 text-break">
                 <xsl:value-of select ="$get-node-name"/>
             </td>
-            <td class="node-value">
+            <td class="node-value col-3 text-break">
                 <xsl:value-of select ="$get-node-value"/>
             </td>
-            <td class="node-path">
+            <td class="node-path text-muted fw-lighter col-4 text-break">
                 <xsl:value-of select ="$get-node-path"/>
             </td>
         </tr>
