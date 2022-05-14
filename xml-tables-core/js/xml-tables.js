@@ -366,7 +366,7 @@ function exportHTMLTableToCSV(htmlTableID, separator = ",") {
 function downloadCSVFile(csvBlob, filename) {
   var downloadLink = document.createElement("a");
   downloadLink.style.display = "none";
-  downloadLink.setAttribute("target", "_blank");
+  downloadLink.setAttribute("target", "_self");
   downloadLink.setAttribute(
     "href",
     "data:text/csv;charset=utf-8," + encodeURIComponent(csvBlob)
@@ -415,7 +415,7 @@ function tableToJson(htmlTableID) {
 function downloadJSONFile(jsonBlob, filename) {
   var downloadLink = document.createElement("a");
   downloadLink.style.display = "none";
-  downloadLink.setAttribute("target", "_blank");
+  downloadLink.setAttribute("target", "_self");
   downloadLink.setAttribute(
     "href",
     "data:text/json;charset=utf-8," + encodeURIComponent(jsonBlob)
