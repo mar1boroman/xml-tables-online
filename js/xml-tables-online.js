@@ -161,8 +161,6 @@ function getXMLBlob(file) {
 
     var url = URL.createObjectURL(xmlBlob);
     window.open(url);
-
-    URL.revokeObjectURL(url);
   };
 }
 
